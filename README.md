@@ -1,3 +1,25 @@
+# TO RUN #
+    $ npm install
+    $ node app.js
+
+
+
++Twitter keys:
++Consumer key	g9lpnakgijcyfv6mMeFrsA
++Consumer secret	KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA
++
++
++Crittercism id:
++52eb22d746b7c25386000001
+
+
+you may find nodemon useful (reruns node as you change anything)
+
+    $ npm install nodemon
+    $ nodemon app.js
+
+
+
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
 Hackathon Starter [![Dependency Status](https://david-dm.org/sahat/hackathon-starter.png?theme=shields.io)](https://david-dm.org/sahat/hackathon-starter)
 =================
