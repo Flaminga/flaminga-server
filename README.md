@@ -4,13 +4,13 @@
 
 
 
-+Twitter keys:
-+Consumer key	g9lpnakgijcyfv6mMeFrsA
-+Consumer secret	KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA
-+
-+
-+Crittercism id:
-+52eb22d746b7c25386000001
+Twitter keys:
+* Consumer key	g9lpnakgijcyfv6mMeFrsA
+* Consumer secret	KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA
+
+
+Crittercism id:
+* 52eb22d746b7c25386000001
 
 
 you may find nodemon useful (reruns node as you change anything)
