@@ -4,6 +4,7 @@
 
 var express = require('express');
 //var MongoStore = require('connect-mongo')(express);
+var pg = require('pg');
 var flash = require('express-flash');
 var less = require('less-middleware');
 var path = require('path');
@@ -42,6 +43,12 @@ var passportConf = require('./config/passport');
 //  console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
 //});
 
+/**
+ * postgres client
+ */
+
+var conString = "postgres://localhost/postgres";
+var client = new pg.Client(conString);
 
 /**
  * Express configuration.
