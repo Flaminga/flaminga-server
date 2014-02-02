@@ -28,11 +28,7 @@ passport.deserializeUser(function(req, id, done) {
  */
 
 passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tokenSecret, profile, done) {
-  db.User.find({where: {name: profile.id}}, function(err, results){
-    if (err) return done(err);
-
-    var existingUser = results[0];
-
+  db.User.find({where: {name: profile.id}}).success(function(existingUser){
     if (existingUser){
         done(null, existingUser);
     } else {
@@ -46,6 +42,8 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
             done(err, null);
         });
     }
+  }).failure(function(err){
+    done(err);
   });
 }));
 
