@@ -1,6 +1,7 @@
 extends layout
 block content
   h1 Settings
+  h2= filterAge
   .panel.panel-default
     .panel-heading
       h2.panel-title Filters
@@ -9,9 +10,6 @@ block content
         .form-group
           | See tweets from accounts that are 
           select
-            option any age
-            option at least 1 month old
-            option at least 3 months old
-            option at least 6 months old
-            option at least 1 year old
+            each opt in filterAgeOptions
+                option(value=opt.days, selected=(opt.days == filterAge))= opt.description
         button.btn.btn-default(type='submit') Save changes

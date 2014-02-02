@@ -12,7 +12,11 @@ var sequelize = new Sequelize('flaminga', null, null, {
 var User = sequelize.define('user', {
     name: Sequelize.STRING,
     accessToken: Sequelize.STRING,
-    tokenSecret: Sequelize.STRING
+    tokenSecret: Sequelize.STRING,
+    filterAge: Sequelize.INTEGER 
+    // Sequelize currently has bugs with ENUM and migrations. ENUM('anyage', '1month', '3month', '6month', '1year')
+    // instead, filterAge can be interpreted as a number of days, with 0 as the special case of "any age"
+    // key: 0 => anyage, 30 => 1month, 90 => 3month, 180 => 6month, 365 => 1year
 });
 
 var MuteList = sequelize.define('mutelist', {
@@ -39,7 +43,7 @@ module.exports = {
     })
 };
 
-var recreateDB = false;
+var recreateDB = true;
 
 sequelize.sync({force: recreateDB}).failure(function(err){
     console.log(err);
