@@ -36,6 +36,8 @@ sequelize.sync().failure(function(err){
 
 module.exports = {
     User: User,
+    MuteList: MuteList,
+    MuteListEntry: MuteListEntry,
     sequelize: sequelize,
     sessionStore: new SequelizeStore({
         db: sequelize

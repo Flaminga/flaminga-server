@@ -37,7 +37,15 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
             accessToken: accessToken,
             tokenSecret: tokenSecret
         }).success(function(user){
-            done(null, user);
+            db.MuteList.create().success(function(list){
+                list.setUser(user).success(function(){
+                    done(null, user);
+                }).failure(function(err){
+                    done(err, null);
+                });
+            }).failure(function(err){
+                done(err, null);
+            });
         }).failure(function(err){
             done(err, null);
         });
