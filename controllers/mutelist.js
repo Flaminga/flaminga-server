@@ -23,9 +23,9 @@ exports.getMuteList = function(req, res) {
 exports.addEntry = function(req, res){
     req.user.getList().success(function(list){
         db.MuteListEntry.create({
-            twitterId: req.body.id
+            twitterId: req.body.id,
+            screenName: req.body.screenName
         }).success(function(entry){
-            debugger;
             list.addEntry(entry).success(function(){
                 res.redirect('/mutelist');
             });
