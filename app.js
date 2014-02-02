@@ -24,6 +24,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var muteListController = require('./controllers/mutelist');
 
 /**
  * API keys + Passport configuration.
@@ -98,6 +99,7 @@ app.post('/account/delete', passportConf.isAuthenticated, userController.postDel
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 app.get('/api', apiController.getApi);
 app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTwitter);
+app.get('/mutelist', muteListController.getMuteList);
 
 /**
  * OAuth routes for sign-in.
