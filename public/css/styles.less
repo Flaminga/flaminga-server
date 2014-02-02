@@ -97,11 +97,10 @@ img.avatar {
 	width: 48px;
 	float: left;
 	margin-left: -52px;
-	margin-top: 10px;
+	margin-top: 2px;
 }
 .author {
 	font-size: small;
-	margin-top: -5px;
 }
 .screenname {
 	font-weight: bold;
@@ -111,11 +110,17 @@ p.tweet-text {
 }
 ol#tweet-list {
 	list-style-type: none;
-}
-ol#tweet-list li {
-	border-bottom: 1px solid gray;
-	margin-bottom: 10px;
-	padding-bottom: 10px;
+  padding-left: 0;
+
+  li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 52px;
+  }
+
+  li+li {
+    border-top: 1px solid gray;
+  }
 }
 span.action-buttons:before {
 	content: "•";
