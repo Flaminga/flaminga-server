@@ -9,13 +9,17 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var secrets = require('./secrets');
 var _ = require('underscore');
 
+var db = require('./db');
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
 passport.deserializeUser(function(req, id, done) {
-    req.models.user.get(id, function(err, user){
-        done(err, user);
+    db.User.find(id).success(function(user){
+        done(null, user);
+    }).failure(function(err){
+        done(err, null);
     });
 });
 
@@ -24,7 +28,7 @@ passport.deserializeUser(function(req, id, done) {
  */
 
 passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tokenSecret, profile, done) {
-  req.models.user.find({name: profile.id}, function(err, results){
+  db.User.find({where: {name: profile.id}}, function(err, results){
     if (err) return done(err);
 
     var existingUser = results[0];
@@ -32,14 +36,14 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
     if (existingUser){
         done(null, existingUser);
     } else {
-        req.models.user.create([{
+        db.User.create({
             name: profile.id,
             accessToken: accessToken,
             tokenSecret: tokenSecret
-        }], function(err, users){
-            if (err) return done(err, null);
-
-            done(null, users[0]);
+        }).success(function(user){
+            done(null, user);
+        }).failure(function(err){
+            done(err, null);
         });
     }
   });

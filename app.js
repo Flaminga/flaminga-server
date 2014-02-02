@@ -3,13 +3,13 @@
  */
 
 var express = require('express');
-var pg = require('pg');
 var flash = require('express-flash');
 var less = require('less-middleware');
 var path = require('path');
 var passport = require('passport');
 var expressValidator = require('express-validator');
-var orm = require('orm');
+
+var db = require('./config/db');
 
 /**
  * Create Express server.
@@ -54,13 +54,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
-app.use(orm.express("postgres://thesmyth@localhost/flaminga", {
-    define: require('./models/define')
-}));
-
 
 app.use(express.session({
-  secret: 'your secret code'
+  secret: 'your secret code',
+  store: db.sessionStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
