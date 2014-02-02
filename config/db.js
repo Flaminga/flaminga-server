@@ -49,7 +49,7 @@ module.exports = {
     })
 };
 
-var recreateDB = true;
+var recreateDB = false;
 
 sequelize.sync({force: recreateDB}).failure(function(err){
     console.log(err);

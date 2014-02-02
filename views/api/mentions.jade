@@ -35,7 +35,7 @@ block content
                     a.icon.icon-favorite(href='#')
                       span.icon-label Favorite
                   li.action-buttons
-                    a.icon.icon-mute(href='#mute', data-id=tweet.id_str, data-screenname=tweet.user.screen_name)
+                    a.icon.icon-mute(href='#mute', data-id=tweet.user.id_str, data-screenname=tweet.user.screen_name)
                       span.icon-label Mute
   script.
     $("a[href='#mute']").click(function(event) {
