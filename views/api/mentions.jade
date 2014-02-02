@@ -35,5 +35,11 @@ block content
                     a.icon.icon-favorite(href='#')
                       span.icon-label Favorite
                   li.action-buttons
-                    a.icon.icon-mute(href='#')
+                    a.icon.icon-mute(href='#mute', data-id=tweet.id_str)
                       span.icon-label Mute
+  script.
+    $("a[href='#mute']").click(function(event) {
+      var idToMute = $(this).attr('data-id');
+      $.ajax({method: 'post', url: '/mutelist/add-entry', data: {'id': idToMute}}).done(function(msg){console.log(msg);});
+      return false;
+    });
