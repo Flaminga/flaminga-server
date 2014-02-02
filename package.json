@@ -1,4 +1,11 @@
 {
+  "name": "flaminga",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  {
   "name": "hackathon-starter",
   "version": "0.0.0",
   "dependencies": {
@@ -35,8 +42,14 @@
     "connect-session-sequelize": "0.0.4"
   },
   "devDependencies": {
-    "nodemon": "~1.0.0"
+    "nodemon": "^1.0.14"
+    "express": "~3.4.8"
+    "npm": "~1.1.0"
   },
+   "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
   "scripts": {
     "start": "if [[ -x ./node_modules/.bin/nodemon ]]; then ./node_modules/.bin/nodemon ./app.js; else node ./app.js; fi"
   }
