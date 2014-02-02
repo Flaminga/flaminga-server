@@ -1,5 +1,17 @@
 extends layout
-
 block content
-  h1 Your Settings
-  p Your settings go here
+  h1 Settings
+  .panel.panel-default
+    .panel-heading
+      h2.panel-title Filters
+    .panel-body
+      form
+        .form-group
+          | See tweets from accounts that are 
+          select
+            option any age
+            option at least 1 month old
+            option at least 3 months old
+            option at least 6 months old
+            option at least 1 year old
+        button.btn.btn-default(type='submit') Save changes
