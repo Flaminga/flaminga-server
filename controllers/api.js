@@ -36,3 +36,37 @@ exports.getTwitter = function(req, res, next) {
   });
 };
 
+
+exports.mentions = function(req, res, next) {
+  var T = new Twit({
+    consumer_key: secrets.twitter.consumerKey,
+    consumer_secret: secrets.twitter.consumerSecret,
+    access_token: req.user.accessToken,
+    access_token_secret: req.user.tokenSecret
+  });
+  T.get('statuses/mentions_timeline', function(err, reply) {
+    if (err) return next(err);
+    res.render('api/mentions', {
+      title: 'Twitter API',
+      tweets: reply
+    });
+  });
+
+}
+
+exports.home = function(req, res, next) {
+  var T = new Twit({
+    consumer_key: secrets.twitter.consumerKey,
+    consumer_secret: secrets.twitter.consumerSecret,
+    access_token: req.user.accessToken,
+    access_token_secret: req.user.tokenSecret
+  });
+  T.get('statuses/home_timeline', function(err, reply) {
+    if (err) return next(err);
+    res.render('api/mentions', {
+      title: 'Twitter API',
+      tweets: reply
+    });
+  });
+
+}
