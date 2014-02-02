@@ -9,6 +9,7 @@ var less = require('less-middleware');
 var path = require('path');
 var passport = require('passport');
 var expressValidator = require('express-validator');
+var orm = require('orm');
 
 /**
  * Create Express server.
@@ -32,14 +33,6 @@ var contactController = require('./controllers/contact');
 var secrets = require('./config/secrets');
 var passportConf = require('./config/passport');
 
-
-/**
- * postgres client
- */
-
-var conString = "postgres://localhost/postgres";
-var client = new pg.Client(conString);
-
 /**
  * Express configuration.
  */
@@ -61,6 +54,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
+app.use(orm.express("postgres://thesmyth@localhost/flaminga", {
+    define: require('./models/define')
+}));
+
+
 app.use(express.session({
   secret: 'your secret code'
 }));
