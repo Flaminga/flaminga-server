@@ -3,12 +3,13 @@
  */
 
 var express = require('express');
-var pg = require('pg');
 var flash = require('express-flash');
 var less = require('less-middleware');
 var path = require('path');
 var passport = require('passport');
 var expressValidator = require('express-validator');
+
+var db = require('./config/db');
 
 /**
  * Create Express server.
@@ -33,14 +34,6 @@ var muteListController = require('./controllers/mutelist');
 var secrets = require('./config/secrets');
 var passportConf = require('./config/passport');
 
-
-/**
- * postgres client
- */
-
-var conString = "postgres://localhost/postgres";
-var client = new pg.Client(conString);
-
 /**
  * Express configuration.
  */
@@ -62,8 +55,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
+
 app.use(express.session({
-  secret: 'your secret code'
+  secret: 'your secret code',
+  store: db.sessionStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
