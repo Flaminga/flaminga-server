@@ -15,7 +15,7 @@ var User = sequelize.define('user', {
     tokenSecret: Sequelize.STRING
 });
 
-User.sync({force: true}).failure(function(err){
+User.sync().failure(function(err){
     console.log(err);
 });
 
