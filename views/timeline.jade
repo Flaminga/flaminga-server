@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Twitter timeline (Jade Iteration Demo)
+  ul
+  each tweet, index in feed
+    li= index + ': ' + tweet.author
