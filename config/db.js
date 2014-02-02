@@ -2,13 +2,18 @@
 var Sequelize = require('sequelize-postgres').sequelize;
 var SequelizeStore = require('connect-session-sequelize')(require('express'));
 
-var sequelize = new Sequelize('flaminga', null, null, {
-    host: 'localhost',
-    dialect: 'postgres',
-    protocol: 'postgres',
-    port: 5432
-});
-
+ if (process.env.HEROKU_POSTGRESQL_MAROON_URL) {
+    // the application is executed on Heroku ... use the postgres database
+    var sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_MAROON_URL)
+ } else {
+    // the application is executed on non-heroku ... use sequelize   
+    var sequelize = new Sequelize('flaminga', null, null, {
+        host: 'localhost',
+        dialect: 'postgres',
+        protocol: 'postgres',
+        port: 5432 
+    });
+}
 var User = sequelize.define('user', {
     name: Sequelize.STRING,
     accessToken: Sequelize.STRING,
