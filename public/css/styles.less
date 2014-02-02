@@ -5,6 +5,40 @@
 @import "lib/bootstrap/bootstrap";
 @import "themes/default";
 
+// Colors
+// -------------------------
+@brand-primary: #DE0060;
+
+@body-bg: #3A3F44;
+@text-color: lighten(#C8C8C8, 7%);
+@link-hover-color: lighten(@link-color, 15%);
+@gray-darker: darken(@text-color, 20%);
+@gray-dark: darken(@text-color, 15%);
+@gray: darken(@text-color, 10%);
+@gray-light: @text-color;
+@gray-lighter: lighten(@gray-light, 10%);
+
+@navbar-default-bg: #272B30;
+@navbar-default-color: #ccc;
+@navbar-default-border: darken(@navbar-default-bg, 25%);
+@navbar-default-brand-color: @brand-primary;
+@navbar-default-brand-hover-color: lighten(@brand-primary, 15%);
+@navbar-default-toggle-border-color: transparent;
+@navbar-default-toggle-hover-bg: darken(@navbar-default-bg, 25%);
+@navbar-default-link-color: lighten(@navbar-default-bg, 80%);
+@navbar-default-link-hover-color: darken(@navbar-default-link-color, 30%);
+@navbar-default-link-active-color: darken(@navbar-default-link-color, 30%);
+
+@list-group-bg: darken(@body-bg, 10%);
+@list-group-border: darken(@list-group-bg, 10%);
+@list-group-hover-bg: lighten(@list-group-bg, 30%);
+@panel-bg: @list-group-bg;
+@panel-inner-border: @list-group-border;
+@panel-default-border: @list-group-border;
+@panel-default-heading-bg: @panel-bg;
+
+@tweet-action-color: darken(@text-color, 25%);
+
 // Scaffolding
 // -------------------------
 
@@ -86,12 +120,14 @@ body {
 }
 
 // Extra space between font-awesome icons and text
+// -------------------------
 [class^="fa-"],
 [class*="fa-"] {
   margin-right: 5px;
 }
 
 // icons
+// -------------------------
 .icon {
   font-family: 'FontAwesome';
   speak: none;
@@ -117,7 +153,8 @@ body {
   content: '\f05e';
 }
 
-//formatting for tweet timelines
+// Formatting for tweet timelines
+// -------------------------
 img.avatar {
 	height: 48px;
 	width: 48px;
@@ -146,7 +183,7 @@ ol#tweet-list {
     min-width: 44px;
   }
   .icon {
-    color: #999;
+    color: @tweet-action-color;
   }
   .icon-label {
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
