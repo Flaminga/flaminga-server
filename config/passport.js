@@ -38,7 +38,7 @@ passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tok
             tokenSecret: tokenSecret
         }).success(function(user){
             db.MuteList.create().success(function(list){
-                list.setUser(user).success(function(){
+                user.setList(list).success(function(){
                     done(null, user);
                 }).failure(function(err){
                     done(err, null);

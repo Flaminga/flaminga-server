@@ -35,7 +35,7 @@
     "connect-session-sequelize": "0.0.4"
   },
   "devDependencies": {
-    "nodemon": "^1.0.14"
+    "nodemon": "~1.0.0"
   },
   "scripts": {
     "start": "if [[ -x ./node_modules/.bin/nodemon ]]; then ./node_modules/.bin/nodemon ./app.js; else node ./app.js; fi"
