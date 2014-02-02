@@ -2,23 +2,29 @@
     $ npm install
     $ node app.js
 
+## Install Postgres
 
+Using your favorite package manager, say,
+    
+    brew install postgres
 
-Twitter keys:
-* Consumer key	g9lpnakgijcyfv6mMeFrsA
-* Consumer secret	KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA
+Then create a database named "flaminga":
+    
+    pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &
+    createdb flaminga
 
+## Twitter keys ##
+* Consumer key	**g9lpnakgijcyfv6mMeFrsA**
+* Consumer secret	**KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA**
 
-Crittercism id:
+## Crittercism id ##
 * 52eb22d746b7c25386000001
 
-
+## Useful tools ##
 you may find nodemon useful (reruns node as you change anything)
 
     $ npm install nodemon
     $ nodemon app.js
-
-
 
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
 Hackathon Starter [![Dependency Status](https://david-dm.org/sahat/hackathon-starter.png?theme=shields.io)](https://david-dm.org/sahat/hackathon-starter)
