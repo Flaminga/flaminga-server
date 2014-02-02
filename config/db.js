@@ -15,7 +15,20 @@ var User = sequelize.define('user', {
     tokenSecret: Sequelize.STRING
 });
 
-User.sync().failure(function(err){
+var MuteList = sequelize.define('mutelist', {
+});
+MuteList.belongsTo(User);
+
+var MuteListEntry = sequelize.define('mutelistentry', {
+    twitterId: Sequelize.STRING
+});
+MuteList.hasMany(MuteListEntry);
+
+User.hasMany(MuteList);
+MuteList.hasMany(User);
+
+
+sequelize.sync().failure(function(err){
     console.log(err);
 });
 
