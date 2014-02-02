@@ -24,8 +24,8 @@ var MuteListEntry = sequelize.define('mutelistentry', {
 });
 MuteList.hasMany(MuteListEntry);
 
-User.hasMany(MuteList);
-MuteList.hasMany(User);
+User.hasMany(MuteList, {as: "Subscription"});
+//MuteList.hasMany(User);
 
 // TODO At some point we should wait for the DB connection to load.
 
@@ -39,6 +39,8 @@ module.exports = {
     })
 };
 
-sequelize.sync({force:true}).failure(function(err){
+var recreateDB = false;
+
+sequelize.sync({force: recreateDB}).failure(function(err){
     console.log(err);
 });
