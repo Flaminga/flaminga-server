@@ -20,7 +20,7 @@ block content
               span.author
                 a(href='#link-to-twitter-profile')= tweet.user.name
             p.tweet-text
-              =tweet.text
+              !=tweet.rendered_text
             .tweet-footer
               a.permalink.tweet-time(href='#permalinkurlhere')= tweet.rendered_time
               .tweet-actions
