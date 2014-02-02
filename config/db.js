@@ -29,7 +29,8 @@ var MuteList = sequelize.define('mutelist', {
 User.hasOne(MuteList, {as: "List"});
 
 var MuteListEntry = sequelize.define('mutelistentry', {
-    twitterId: Sequelize.STRING
+    twitterId: Sequelize.STRING,
+    screenName: Sequelize.STRING
 });
 MuteList.hasMany(MuteListEntry, {as: "Entries"});
 

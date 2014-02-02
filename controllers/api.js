@@ -53,14 +53,31 @@ exports.mentions = function(req, res, next) {
       var filterByAge = tweetAuthorOldEnough.bind(undefined, req.user.filterAge);
       filtered = reply.filter(filterByAge);
     }
-    
     rendered = filtered.map(addRenderedTweetText);
+
+    req.user.getList().success(function(result){
+      result.getEntries().success(function(entries){
+        var filterByListFunction = filterByUsers.bind(undefined, entries);
+        var filteredByUser = rendered.filter(filterByListFunction);
     
-    res.render('api/mentions', {
-      title: 'Your filtered mentions',
-      tweets: rendered
+        res.render('api/mentions', {
+          title: 'Your filtered mentions',
+          tweets: filteredByUser
+        });
+      })
     });
   });
+}
+
+function filterByUsers(entries, tweet) {
+  for (var i=0; i < entries.length; i++) {
+    console.log(entries[i].twitterId);
+    console.log(tweet['user']['id_str']);
+    if (tweet['user']['id_str'] == entries[i].twitterId) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function addRenderedTweetText(tweet) {

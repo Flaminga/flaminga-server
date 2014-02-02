@@ -16,6 +16,7 @@ block content
             h4.media-heading
               span.screenname
                 a(href='#link-to-twitter-profile')= tweet.user.screen_name 
+                br
               span.author
                 a(href='#link-to-twitter-profile')= tweet.user.name
             p.tweet-text
@@ -34,5 +35,12 @@ block content
                     a.icon.icon-favorite(href='#')
                       span.icon-label Favorite
                   li.action-buttons
-                    a.icon.icon-mute(href='#')
+                    a.icon.icon-mute(href='#mute', data-id=tweet.user.id_str, data-screenname=tweet.user.screen_name)
                       span.icon-label Mute
+  script.
+    $("a[href='#mute']").click(function(event) {
+      var idToMute = $(this).attr('data-id');
+      var screenNameToMute = $(this).attr('data-screenname');
+      $.ajax({method: 'post', url: '/mutelist/add-entry', data: {'id': idToMute, 'screenName': screenNameToMute}}).done(function(msg){console.log(msg);});
+      return false;
+    });
