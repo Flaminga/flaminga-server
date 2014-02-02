@@ -1,5 +1,15 @@
 extends layout
-
 block content
-  h1 Your Settings
-  p Your settings go here
+  h1 Settings
+  h2= filterAge
+  .panel.panel-default
+    .panel-heading
+      h2.panel-title Filters
+    .panel-body
+      form
+        .form-group
+          | See tweets from accounts that are 
+          select
+            each opt in filterAgeOptions
+                option(value=opt.days, selected=(opt.days == filterAge))= opt.description
+        button.btn.btn-default(type='submit') Save changes
