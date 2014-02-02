@@ -17,7 +17,7 @@ var User = sequelize.define('user', {
 
 var MuteList = sequelize.define('mutelist', {
 });
-MuteList.belongsTo(User);
+User.hasOne(MuteList, {as: "List"});
 
 var MuteListEntry = sequelize.define('mutelistentry', {
     twitterId: Sequelize.STRING
@@ -27,17 +27,18 @@ MuteList.hasMany(MuteListEntry);
 User.hasMany(MuteList);
 MuteList.hasMany(User);
 
-
-sequelize.sync().failure(function(err){
-    console.log(err);
-});
-
 // TODO At some point we should wait for the DB connection to load.
 
 module.exports = {
     User: User,
+    MuteList: MuteList,
+    MuteListEntry: MuteListEntry,
     sequelize: sequelize,
     sessionStore: new SequelizeStore({
         db: sequelize
     })
 };
+
+sequelize.sync({force:true}).failure(function(err){
+    console.log(err);
+});
