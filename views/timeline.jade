@@ -1,7 +1,18 @@
 extends layout
 
 block content
-  h1 Twitter timeline (Jade Iteration Demo)
-  ul
-  each tweet, index in feed
-    li= index + ': ' + tweet.author
+  .container
+    #flash
+    h1 Twitter timeline (Jade Iteration Demo)
+    p
+     | This is a timeline from 
+     a(href='https://twitter.com') Twitter
+     | .
+     ol#tweet-list
+       each tweet, index in feed
+         li= index + ': ' + tweet.author
+           span.action-buttons
+              a(href='#') Reply
+              a(href='#') Retweet
+              a(href='#') Favorite
+              a(href='#') Mute

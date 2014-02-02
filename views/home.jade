@@ -4,14 +4,17 @@ block content
   h1 Sign into Flaminga
   p.lead
     Enjoy distraction-free tweeting with shared mute lists, smart filters, customizable views, and more.
-  form(method='POST')
-      legend Sign In
-      .form-group
-        a.btn.btn-twitter(href='/auth/twitter')
-            i.fa.fa-twitter
-            | Twitter
+  
   if user
     .alert.alert-success.animated.flipInX
       i.fa.fa-check
       strong Success!
       |  Show twitter timeline here!
+  else
+    form(method='POST')
+    legend Sign In
+      .form-group
+        a.btn.btn-twitter(href='/auth/twitter')
+          i.fa.fa-twitter
+          | Twitter
+    
