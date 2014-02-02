@@ -94,6 +94,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/api', apiController.getApi);
 app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTwitter);
 app.get('/settings', settingsController.getSettings);
+app.post('/settings', settingsController.postSettings);
 app.get('/mutelist', muteListController.getMuteList);
 app.get('/timeline', timelineController.timeline);
 
