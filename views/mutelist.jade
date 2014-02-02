@@ -2,4 +2,9 @@ extends layout
 
 block content
   h1 Your Muted List
-  p Your muted list goes here
+    
+  ul.list-unstyled
+    for muteListEntry in mutelist
+      li= muteListEntry
+    else 
+      li You haven't muted anyone yet.
