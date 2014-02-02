@@ -2,7 +2,7 @@
 var Sequelize = require('sequelize-postgres').sequelize;
 var SequelizeStore = require('connect-session-sequelize')(require('express'));
 
-var sequelize = new Sequelize('flaminga', 'thesmyth', "pass", {
+var sequelize = new Sequelize('flaminga', null, null, {
     host: 'localhost',
     dialect: 'postgres',
     protocol: 'postgres',
