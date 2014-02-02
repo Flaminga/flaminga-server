@@ -27,11 +27,6 @@ MuteList.hasMany(MuteListEntry);
 User.hasMany(MuteList);
 MuteList.hasMany(User);
 
-
-sequelize.sync().failure(function(err){
-    console.log(err);
-});
-
 // TODO At some point we should wait for the DB connection to load.
 
 module.exports = {
@@ -43,3 +38,7 @@ module.exports = {
         db: sequelize
     })
 };
+
+sequelize.sync({force:true}).failure(function(err){
+    console.log(err);
+});
