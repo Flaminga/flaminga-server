@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaminga</title>
+    <link href="css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lib/animate.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/lib/jquery-2.1.0.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+          <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">Flaminga</a>
+          </div>
+
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="#">@ mentions</a></li>
+              <li><a href="#">Settings</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Sign out</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="flash"></div>
+
+        <h1>Settings</h1>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Filters</h2>
+          </div>
+          <div class="panel-body">
+            <form>
+              <div class="form-group">
+                See tweets from accounts that are
+                <select>
+                  <option>any age</option>
+                  <option>at least 1 month old</option>
+                  <option>at least 3 months old</option>
+                  <option>at least 6 months old</option>
+                  <option>at least 1 year old</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-default">Save changes</button>
+            </form>
+          </div>
+        </div>
+
+        <form class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Muted</h2>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              <a href="#">random1</a>
+              <a role="button" class="pull-right btn btn-xs btn-default" href="#">unmute</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">someone</a>
+              <a role="button" class="pull-right btn btn-xs btn-default" href="#">unmute</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">apj</a>
+              <a role="button" class="pull-right btn btn-xs btn-default" href="#">unmute</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">eok</a>
+              <a role="button" class="pull-right btn btn-xs btn-default" href="#">unmute</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container text-center">
+        <div>© 2014 Flaminga</div>
+      </div>
+    </div>
+  </body>
+</html>
