@@ -13,7 +13,7 @@ exports.getMuteList = function(req, res) {
         title: 'Mute List',
         mutelist: entries
       });
-      console.log(entries);
+   //   console.log(entries);
     });
   });
 };

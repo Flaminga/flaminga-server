@@ -16,10 +16,11 @@ block content
             h4.media-heading
               span.screenname
                 a(href='#link-to-twitter-profile')= tweet.user.screen_name 
+                br
               span.author
                 a(href='#link-to-twitter-profile')= tweet.user.name
             p.tweet-text
-              !=tweet.rendered_text
+              =tweet.text
             .tweet-footer
               a.permalink.tweet-time(href='#permalinkurlhere')= tweet.rendered_time
               .tweet-actions
