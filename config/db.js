@@ -31,7 +31,7 @@ User.hasOne(MuteList, {as: "List"});
 var MuteListEntry = sequelize.define('mutelistentry', {
     twitterId: Sequelize.STRING
 });
-MuteList.hasMany(MuteListEntry);
+MuteList.hasMany(MuteListEntry, {as: "Entries"});
 
 User.hasMany(MuteList, {as: "Subscription"});
 //MuteList.hasMany(User);
