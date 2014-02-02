@@ -21,10 +21,12 @@ Then create a database named "flaminga":
 * 52eb22d746b7c25386000001
 
 ## Useful tools ##
-you may find nodemon useful (reruns node as you change anything)
+Although you may find nodemon useful (reruns node as you change anything), we currently recommend **not** using nodemon due to session corruption issues.
 
     $ npm install nodemon
     $ nodemon app.js
+
+If you have session corruption, drop the tables in Postgres and run node again to recreate them.
 
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
 Hackathon Starter [![Dependency Status](https://david-dm.org/sahat/hackathon-starter.png?theme=shields.io)](https://david-dm.org/sahat/hackathon-starter)
