@@ -30,8 +30,8 @@ module.exports = {
   },
 
   twitter: {
-    consumerKey: 'Your Consumer Key',
-    consumerSecret: 'Your Consumer Secret',
+    consumerKey: 'g9lpnakgijcyfv6mMeFrsA',
+    consumerSecret: 'KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA',
     callbackURL: '/auth/twitter/callback',
     passReqToCallback: true
   },
