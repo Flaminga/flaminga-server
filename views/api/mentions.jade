@@ -35,11 +35,12 @@ block content
                     a.icon.icon-favorite(href='#')
                       span.icon-label Favorite
                   li.action-buttons
-                    a.icon.icon-mute(href='#mute', data-id=tweet.id_str)
+                    a.icon.icon-mute(href='#mute', data-id=tweet.id_str, data-screenname=tweet.user.screen_name)
                       span.icon-label Mute
   script.
     $("a[href='#mute']").click(function(event) {
       var idToMute = $(this).attr('data-id');
-      $.ajax({method: 'post', url: '/mutelist/add-entry', data: {'id': idToMute}}).done(function(msg){console.log(msg);});
+      var screenNameToMute = $(this).attr('data-screenname');
+      $.ajax({method: 'post', url: '/mutelist/add-entry', data: {'id': idToMute, 'screenName': screenNameToMute}}).done(function(msg){console.log(msg);});
       return false;
     });
