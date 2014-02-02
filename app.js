@@ -96,6 +96,7 @@ app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized,
 app.get('/settings', settingsController.getSettings);
 app.post('/settings', settingsController.postSettings);
 app.get('/mutelist', muteListController.getMuteList);
+app.post('/mutelist/add-entry', muteListController.addEntry);
 app.get('/timeline', timelineController.timeline);
 
 /**
