@@ -6,19 +6,33 @@ block content
       i.fa.fa-twitter(style='color: #4099ff')
       | #{title}
 
-  br
-  .lead Your Filtered Mentions
-
-  ul.list-unstyled
+  ol#tweet-list
     for tweet in tweets
       li
-        .panel.panel-default
-          .panel-body
-            .clearfix
-              - var image = tweet.user.profile_image_url.replace('_normal', '');
-              img.pull-left(src='#{image}', width=50, height=50, style='margin-right: 10px')
-
-              =tweet.user.name
-              small.text-muted  @#{tweet.user.screen_name}
-              br
-              small #{tweet.text}
+        .media
+          a.pull-left(href='#link-to-twitter-profile')
+            img.media-object.avatar(src=tweet.user.profile_image_url, alt='')
+          .media-body
+            h4.media-heading
+              span.screenname
+                a(href='#link-to-twitter-profile')= tweet.user.screen_name 
+              span.author
+                a(href='#link-to-twitter-profile')= tweet.user.name
+            p.tweet-text
+              !=tweet.rendered_text
+            .tweet-footer
+              a.permalink.tweet-time(href='#permalinkurlhere')= tweet.rendered_time
+              .tweet-actions
+                ul.list-unstyled
+                  li.action-buttons
+                    a.icon.icon-reply(href='#')
+                      span.icon-label Reply
+                  li.action-buttons
+                    a.icon.icon-retweet(href='#')
+                      span.icon-label Retweet
+                  li.action-buttons
+                    a.icon.icon-favorite(href='#')
+                      span.icon-label Favorite
+                  li.action-buttons
+                    a.icon.icon-mute(href='#')
+                      span.icon-label Mute

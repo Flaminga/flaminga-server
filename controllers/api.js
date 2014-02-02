@@ -2,6 +2,8 @@ var secrets = require('../config/secrets');
 var User = require('../models/User');
 var _ = require('underscore');
 var Twit = require('twit');
+var twitter = require('twitter-text');
+var moment = require('moment');
 
 /**
  * GET /api
@@ -52,11 +54,19 @@ exports.mentions = function(req, res, next) {
       filtered = reply.filter(filterByAge);
     }
     
+    rendered = filtered.map(addRenderedTweetText);
+    
     res.render('api/mentions', {
-      title: 'Twitter API',
-      tweets: filtered
+      title: 'Your filtered mentions',
+      tweets: rendered
     });
   });
+}
+
+function addRenderedTweetText(tweet) {
+  tweet['rendered_text'] = twitter.autoLink(twitter.htmlEscape(tweet['text']));
+  tweet['rendered_time'] = moment(tweet['created_at']).fromNow();  
+  return tweet;
 }
 
 function tweetAuthorOldEnough(daysOld, tweet) {
