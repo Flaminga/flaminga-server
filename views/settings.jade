@@ -1,15 +1,19 @@
 extends layout
 block content
   h1 Settings
-  h2= filterAge
   .panel.panel-default
     .panel-heading
       h2.panel-title Filters
     .panel-body
-      form
+      if success
+        .alert.alert-success.animated.flipInX
+          i.fa.fa-check
+          strong Success!
+          |  Updated filter.
+      form(method='post', action='')
         .form-group
           | See tweets from accounts that are 
-          select
+          select(name='filterAge')
             each opt in filterAgeOptions
                 option(value=opt.days, selected=(opt.days == filterAge))= opt.description
         button.btn.btn-default(type='submit') Save changes

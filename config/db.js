@@ -31,7 +31,7 @@ User.hasOne(MuteList, {as: "List"});
 var MuteListEntry = sequelize.define('mutelistentry', {
     twitterId: Sequelize.STRING
 });
-MuteList.hasMany(MuteListEntry);
+MuteList.hasMany(MuteListEntry, {as: "Entries"});
 
 User.hasMany(MuteList, {as: "Subscription"});
 //MuteList.hasMany(User);
@@ -48,7 +48,7 @@ module.exports = {
     })
 };
 
-var recreateDB = true;
+var recreateDB = false;
 
 sequelize.sync({force: recreateDB}).failure(function(err){
     console.log(err);

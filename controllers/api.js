@@ -46,12 +46,27 @@ exports.mentions = function(req, res, next) {
   });
   T.get('statuses/mentions_timeline', function(err, reply) {
     if (err) return next(err);
+    var filtered = reply;
+    if (req.user && req.user.filterAge) {
+      var filterByAge = tweetAuthorOldEnough.bind(undefined, req.user.filterAge);
+      filtered = reply.filter(filterByAge);
+    }
+    
     res.render('api/mentions', {
       title: 'Twitter API',
-      tweets: reply
+      tweets: filtered
     });
   });
+}
 
+function tweetAuthorOldEnough(daysOld, tweet) {
+  var created = tweet['user']['created_at'];
+  var created_date = new Date(created);
+    
+  if ((new Date().getTime() - created_date.getTime()) > (1000 * 60 * 60 * 24 * daysOld)) {
+    return true;
+  }
+  return false;
 }
 
 exports.home = function(req, res, next) {
