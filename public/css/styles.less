@@ -91,6 +91,32 @@ body {
   margin-right: 5px;
 }
 
+// icons
+.icon {
+  font-family: 'FontAwesome';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  font-size: 21px;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+}
+.icon-reply:before {
+  content: '\f112';
+}
+.icon-retweet:before {
+  content: '\f079';
+}
+.icon-favorite:before {
+  content: '\f004';
+}
+.icon-mute:before {
+  content: '\f05e';
+}
+
 //formatting for tweet timelines
 img.avatar {
 	height: 48px;
@@ -113,10 +139,36 @@ ol#tweet-list {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  li+li {
-    border-top: 1px solid gray;
+}
+.tweet-actions {
+  li.action-buttons {
+    display: inline-block;
+    min-width: 44px;
+  }
+  .icon {
+    color: #999;
+  }
+  .icon-label {
+    margin-left: -1000px;
   }
 }
-span.action-buttons:before {
+ol#tweet-list > li+li {
+  border-top: 1px solid gray;
+}
+span.tweet-actions:before {
 	content: "•";
+}
+
+@media only screen and (min-width: 395px) {
+  .icon {
+    font-size: 1em;
+  }
+  .tweet-actions {
+    .action-buttons+.action-buttons {
+      margin-left: 10px;
+    }
+    .icon-label {
+      margin-left: 5px;
+    }
+  }
 }
