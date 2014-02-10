@@ -7,8 +7,8 @@ module.exports = {
   },
 
   twitter: {
-    consumerKey: 'g9lpnakgijcyfv6mMeFrsA',
-    consumerSecret: 'KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA',
+    consumerKey: 'Your Twitter Consumer Key',
+    consumerSecret: 'Your Twitter Consumer Secret',
     callbackURL: '/auth/twitter/callback',
     passReqToCallback: true
   },

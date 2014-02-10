@@ -13,12 +13,19 @@ Then create a database named "flaminga":
     pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &
     createdb flaminga
 
-## Twitter keys ##
-* Consumer key	**g9lpnakgijcyfv6mMeFrsA**
-* Consumer secret	**KtU2C2yiwH05wQSfjDqQjQyBECHPqJQeAtlPywBYmA**
 
-## Crittercism id ##
-* 52eb22d746b7c25386000001
+## Generate Twitter API keys
+- Sign in at [https://dev.twitter.com](https://dev.twitter.com/)
+- From the profile picture dropdown menu select **My Applications**
+- Click **Create a new application**
+- Enter your application name, website and description
+- For **Callback URL**: http://127.0.0.1:3000/auth/twitter/callback
+- Go to **Settings** tab
+- Under *Application Type* select **Read and Write** access
+- Check the box **Allow this application to be used to Sign in with Twitter**
+- Click **Update this Twitter's applications settings**
+- Copy and paste *Consumer Key* and *Consumer Secret* keys into `config/secrets.js`
+
 
 ## Useful tools ##
 Although you may find nodemon useful (reruns node as you change anything), we currently recommend **not** using nodemon due to session corruption issues.
@@ -27,6 +34,10 @@ Although you may find nodemon useful (reruns node as you change anything), we cu
     $ nodemon app.js
 
 If you have session corruption, drop the tables in Postgres and run node again to recreate them.
+
+
+
+This was built using Hackathon Starter kit as a base.
 
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
 Hackathon Starter [![Dependency Status](https://david-dm.org/sahat/hackathon-starter.png?theme=shields.io)](https://david-dm.org/sahat/hackathon-starter)
@@ -114,93 +125,7 @@ node app.js
 >application and automatically restart the server. Once installed, instead of `node app.js` use `nodemon app.js`.
 >It is a big time saver in the long run.
 
-Next up, if you want to use any of the APIs or OAuth authentication methods, you will need to obtain
-appropriate credentials: Client ID, Client Secret, API Key, or Username & Password. You will
-need to go through each provider to generate new credentials.
 
-Obtaining API Keys
-------------------
-<img src="http://images.google.com/intl/en_ALL/images/srpr/logo6w.png" width="200">
-- Visit [Google Cloud Console](https://cloud.google.com/console/project)
-- Click **CREATE PROJECT** button
-- Enter *Project Name*, then click **CREATE**
-- Then select *APIs & auth* from the sidebar and click on *Credentials* tab
-- Click **CREATE NEW CLIENT ID** button
- - **Application Type**: Web Application
- - **Authorized Javascript origins**: http://localhost:3000
- - **Authorized redirect URI**: http://localhost:3000/auth/google/callback
-- Copy and paste *Client ID* and *Client secret* keys into `config/secrets.js`
-
-:exclamation: **Note**: When you ready to deploy to production don't forget to add your new url to **Authorized Javascript origins** and **Authorized redirect URI**, e.g. `http://my-awesome-app.herokuapp.com` and `http://my-awesome-app.herokuapp.com/auth/google/callback` respectively. The same goes for other providers.
-
-<hr>
-
-<img src="http://www.doit.ba/img/facebook.jpg" width="200">
-- Visit [Facebook Developers](https://developers.facebook.com/)
-- Click **Apps > Create a New App** in the navigation bar
-- Enter *Display Name*, then choose a category, then click **Create app**
-- Copy and paste *App ID* and *App Secret* keys into `config/secrets.js`
- - *App ID* is **clientID**, *App Secret* is **clientSecret**
-- Click on *Settings* on the sidebar, then click **+ Add Platform**
-- Select **Website**
-- Enter `http://localhost:3000` for *Site URL*
-
-<hr>
-
-<img src="https://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Logo.png" width="200">
-- Go to [Account Settings](https://github.com/settings/profile)
-- Select **Applications** from the sidebar
-- Then inside **Developer applications** click on **Register new application**
-- Enter *Application Name* and *Homepage URL*.
-- For *Authorization Callback URL*: http://localhost:3000/auth/github/callback
-- Click **Register application**
-- Now copy and paste *Client ID* and *Client Secret* keys into `config/secrets.js`
-
-<hr>
-
-<img src="https://g.twimg.com/Twitter_logo_blue.png" width="100">
-- Sign in at [https://dev.twitter.com](https://dev.twitter.com/)
-- From the profile picture dropdown menu select **My Applications**
-- Click **Create a new application**
-- Enter your application name, website and description
-- For **Callback URL**: http://127.0.0.1:3000/auth/twitter/callback
-- Go to **Settings** tab
-- Under *Application Type* select **Read and Write** access
-- Check the box **Allow this application to be used to Sign in with Twitter**
-- Click **Update this Twitter's applications settings**
-- Copy and paste *Consumer Key* and *Consumer Secret* keys into `config/secrets.js`
-
-<hr>
-
-<img src="https://www.paypalobjects.com/webstatic/developer/logo_paypal-developer_beta.png" width="200">
-- Visit [PayPal Developer](https://developer.paypal.com/)
-- Log in using your existing PayPal account
-- Click **Applications > Create App** in the navigation bar
-- Enter *Application Name*, then click **Create app**
-- Copy and paste *Client ID* and *Secret* keys into `config/secrets.js`
-- *App ID* is **client_id**, *App Secret* is **client_secret**
-- Change **host** to api.paypal.com if you want to test against production and use the live credentials
-
-<hr>
-
-<img src="https://www.dropboxatwork.com/wp-content/uploads/2013/02/foursquare-logo.png" width="200">
-- Go to [foursquare for Developers](https://developer.foursquare.com/)
-- Click on **My Apps** in the top menu
-- Click the **Create A New App** button
-- Enter *App Name*, *Welcome page url*,
-- For **Redirect URI**: http://localhost:3000/auth/foursquare/callback
-- Click **Save Changes**
-- Copy and paste *Client ID* and *Client Secret* keys into `config/secrets.js`
-
-<hr>
-
-<img src="http://www.athgo.org/ablog/wp-content/uploads/2013/02/tumblr_logo.png" width="200">
-- Go to http://www.tumblr.com/oauth/apps
-- Once signed in, click **+Register application**
-- Fill in all the details
-- For **Default Callback URL**: http://localhost:3000/auth/tumblr/callback
-- Click **✔Register**
-- Copy and paste *OAuth consumer key* and *OAuth consumer secret* keys into `config/secrets.js`
 
 Project Structure
 -----------------
