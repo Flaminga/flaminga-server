@@ -20,8 +20,9 @@ Then create a database named "flaminga":
 - Click **Create a new application**
 - Enter your application name, website and description
 - For **Callback URL**: http://127.0.0.1:3000/auth/twitter/callback
-- Go to **Settings** tab
+- Go to **Permissions** tab
 - Under *Application Type* select **Read and Write** access
+- Go to **Settings** tab
 - Check the box **Allow this application to be used to Sign in with Twitter**
 - Click **Update this Twitter's applications settings**
 - Copy and paste *Consumer Key* and *Consumer Secret* keys into `config/secrets.js`
