@@ -25,7 +25,8 @@ Then create a database named "flaminga":
 - Go to **Settings** tab
 - Check the box **Allow this application to be used to Sign in with Twitter**
 - Click **Update this Twitter's applications settings**
-- Copy and paste *Consumer Key* and *Consumer Secret* keys into `config/secrets.js`
+- Copy `config/secrets.js.example` to `config/secrets.js`
+  - Copy and paste *Consumer Key* and *Consumer Secret* keys into `config/secrets.js`
 
 
 ## Useful tools ##
